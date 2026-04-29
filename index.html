@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La Contracción · Vinilo</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
 <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -176,6 +177,52 @@
     font-style: italic;
     color: var(--accent-deep);
     margin-top: 12px;
+  }
+  .intro__soundtrack {
+    margin-top: 14px;
+    padding: 8px 18px 8px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    align-self: flex-start;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s var(--ease);
+    font: inherit;
+    color: inherit;
+    text-align: left;
+  }
+  @media (max-width: 820px) { .intro__soundtrack { align-self: center; } }
+  .intro__soundtrack:hover {
+    border-color: var(--accent);
+    background: var(--surface);
+    transform: translateY(-2px);
+  }
+  .intro__soundtrack:hover .disc { animation-play-state: running; }
+  .intro__soundtrack .disc {
+    flex-shrink: 0;
+    animation: spin 6s linear infinite paused;
+  }
+  .intro__soundtrack-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .intro__soundtrack-line1 {
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg);
+    font-weight: 700;
+  }
+  .intro__soundtrack-line2 {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: italic;
   }
 
   /* ---------- Vinyl row ---------- */
@@ -796,7 +843,7 @@
     <div class="hero__text">
       <div class="hero__brand">
         <div class="brand">La <span>·</span> Contracción</div>
-        <div class="subtitle">Ocho capítulos · Ocho voces</div>
+        <div class="subtitle">Una investigación · Ocho protagonistas</div>
       </div>
       <p class="intro__creator">
         <strong>La Contracción</strong> es una ficción sonora creada y escrita por <em>Fernando Cortés Sancho</em>
@@ -805,6 +852,16 @@
         Laia, una periodista de investigación, descubre en internet el testimonio de un hombre que afirma haber visto a su doble en el metro. Lo que parecía una historia aislada empieza a revelar conexiones inquietantes. Los límites entre identidad y realidad se difuminan cada vez más con las investigaciones.
       </p>
       <p class="intro__hook">¿Qué le está sucediendo a la humanidad?</p>
+      <button type="button" class="intro__soundtrack" id="soundtrackTeaser" aria-label="Reproducir el preludio">
+        <div class="disc disc--blue" style="--size: 56px;">
+          <div class="disc__label disc__label--main"></div>
+          <div class="disc__hole"></div>
+        </div>
+        <div class="intro__soundtrack-text">
+          <div class="intro__soundtrack-line1">Escucha el trailer</div>
+          <div class="intro__soundtrack-line2">— un preludio al relato —</div>
+        </div>
+      </button>
     </div>
   </section>
 
@@ -857,14 +914,14 @@
 
 <script>
 const cast = {
-  Laia:            { actor: "Isa Orea",      ig: "isaorea" },
-  Mangel:          { actor: "Por confirmar" },
-  Carla:           { actor: "Por confirmar" },
-  "Wei Xu":        { actor: "Por confirmar" },
-  Alvaro:          { actor: "Por confirmar" },
-  Julia:           { actor: "Por confirmar" },
-  Dario:           { actor: "Por confirmar" },
-  "Padre Rodrigo": { actor: "Por confirmar" },
+  Laia:            { actor: "Isa Orea",          ig: "isaorea" },
+  Mangel:          { actor: "Oscar Manuel Ruiz" },
+  Carla:           { actor: "Sara Rhodes" },
+  "Wei Xu":        { actor: "Rodrigo Rivera" },
+  Alvaro:          { actor: "Sergio Vera" },
+  Julia:           { actor: "Elena Cabanillas" },
+  Dario:           { actor: "Andrés García Vera" },
+  "Padre Rodrigo": { actor: "Jordi Estapé" },
 };
 
 const tracks = [
@@ -1127,14 +1184,15 @@ detailClose.addEventListener("click", () => {
 
 /* ---------- Team lists ---------- */
 const castList = [
-  { primary: "Laia",          secondary: "Isa Orea",     ig: "isaorea" },
-  { primary: "Mangel",        secondary: "Por confirmar" },
-  { primary: "Carla",         secondary: "Por confirmar" },
-  { primary: "Wei Xu",        secondary: "Por confirmar" },
-  { primary: "Alvaro",        secondary: "Por confirmar" },
-  { primary: "Julia",         secondary: "Por confirmar" },
-  { primary: "Dario",         secondary: "Por confirmar" },
-  { primary: "Padre Rodrigo", secondary: "Por confirmar" },
+  { primary: "Laia",          secondary: "Isa Orea",            ig: "isaorea" },
+  { primary: "Mangel",        secondary: "Oscar Manuel Ruiz" },
+  { primary: "Carla",         secondary: "Sara Rhodes" },
+  { primary: "Wei Xu",        secondary: "Rodrigo Rivera" },
+  { primary: "Alvaro",        secondary: "Sergio Vera" },
+  { primary: "Julia",         secondary: "Elena Cabanillas" },
+  { primary: "Dario",         secondary: "Andrés García Vera" },
+  { primary: "Padre Rodrigo", secondary: "Jordi Estapé" },
+  { primary: "Créditos",      secondary: "Claudia García" },
 ];
 
 const crew = [
@@ -1162,6 +1220,12 @@ castList.forEach(m => teamGrid.appendChild(renderMember(m)));
 
 const crewGrid = document.getElementById("crewGrid");
 crew.forEach(m => crewGrid.appendChild(renderMember(m)));
+
+const soundtrackTeaser = document.getElementById("soundtrackTeaser");
+soundtrackTeaser.addEventListener("click", () => {
+  const introIdx = tracks.findIndex(t => t.intro);
+  if (introIdx >= 0) selectTrack(introIdx);
+});
 </script>
 </body>
 </html>
