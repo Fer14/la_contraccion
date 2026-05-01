@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Contracción · Vinilo</title>
+<title>La Contracción</title>
 <link rel="icon" type="image/png" href="img/favicon.png">
 <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 <style>
@@ -538,6 +538,13 @@
   }
   .actor-card__ig:hover { background: var(--accent-bright); color: var(--fg); }
   .actor-card__ig svg { width: 14px; height: 14px; fill: currentColor; }
+  .actor-card__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex-shrink: 0;
+    justify-content: flex-end;
+  }
 
   /* ---------- Walkman (lives inside detail panel) ---------- */
   .walkman {
@@ -649,6 +656,7 @@
     background: radial-gradient(circle at 35% 30%, #ccc, #222 85%);
     box-shadow: 0 3px 6px rgba(0,0,0,0.25), 0 0 0 1px rgba(0,0,0,0.3) inset;
     z-index: 11;
+    pointer-events: none;
   }
   .tonearm__pivot::after {
     content: "";
@@ -672,6 +680,7 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.6);
     border-radius: 1px;
     z-index: 10;
+    pointer-events: none;
   }
   .walkman.playing .tonearm__arm { transform: rotate(40deg); }
   .tonearm__counter {
@@ -806,6 +815,13 @@
   .member__link:hover { background: var(--accent-bright); color: #1a1a05; }
   .member__link svg { width: 14px; height: 14px; fill: currentColor; }
   .member__link--soon { color: var(--muted); pointer-events: none; opacity: 0.55; }
+  .member__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    flex-shrink: 0;
+    justify-content: flex-end;
+  }
 
   footer {
     text-align: center;
@@ -831,6 +847,92 @@
   .disc-slot:nth-child(7) { animation-delay: 0.28s; }
   .disc-slot:nth-child(8) { animation-delay: 0.32s; }
   .disc-slot:nth-child(9) { animation-delay: 0.36s; }
+
+  /* ---------- Phones ---------- */
+  @media (max-width: 600px) {
+    :root {
+      --disc-size: 118px;
+      --walkman-disc-size: 200px;
+    }
+    html, body { font-size: 15px; }
+
+    .app { padding: 24px 16px 32px; gap: 32px; max-width: 100%; }
+
+    .hero { padding: 0 0 24px; gap: 24px; }
+    .hero__brand { gap: 10px; padding-bottom: 12px; }
+    .brand { font-size: 15px; letter-spacing: 0.18em; }
+    .subtitle { font-size: 12px; letter-spacing: 0.2em; }
+    .intro__creator { font-size: 14px; }
+    .intro__synopsis { font-size: 16px; line-height: 1.6; }
+    .intro__hook { font-size: 16px; letter-spacing: 0.14em; }
+    .intro__soundtrack { padding: 6px 14px 6px 6px; gap: 10px; }
+    .intro__soundtrack-line1 { font-size: 12px; }
+    .intro__soundtrack-line2 { font-size: 10px; }
+
+    .shelf-label { font-size: 13px; letter-spacing: 0.22em; }
+    .shelf { gap: 18px; padding: 12px 4px 20px; }
+    .disc-slot { gap: 10px; }
+    .disc-slot .cap { font-size: 12px; letter-spacing: 0.18em; }
+
+    .detail { padding: 22px 14px; border-radius: 14px; }
+    .detail__grid { gap: 24px; }
+    .detail__close { width: 32px; height: 32px; font-size: 18px; top: 10px; right: 10px; }
+    .detail__chapter { font-size: 12px; letter-spacing: 0.22em; }
+    .detail__title { font-size: 22px; }
+    .detail__description { font-size: 15px; line-height: 1.55; }
+
+    .walkman { padding: 34px 16px 20px; gap: 14px; border-radius: 14px; }
+    .walkman__brand { font-size: 11px; letter-spacing: 0.22em; left: 16px; top: 12px; }
+    .walkman::before { top: 12px; right: 16px; width: 6px; height: 6px; }
+
+    .deck { height: calc(var(--walkman-disc-size) + 30px); margin-top: 10px; }
+    .walkman__window { left: 14px; }
+    .walkman__placeholder { font-size: 11px; letter-spacing: 0.22em; }
+
+    .tonearm__pivot { top: 14px; right: 22px; width: 18px; height: 18px; }
+    .tonearm__pivot::after { width: 5px; height: 5px; }
+    .tonearm__arm { top: 23px; right: 30px; height: 200px; }
+    .walkman.playing .tonearm__arm { transform: rotate(34deg); }
+    .tonearm__counter { width: 18px; height: 14px; top: -10px; left: -7px; }
+    .tonearm__head { width: 22px; height: 18px; bottom: -10px; left: -9px; }
+
+    .actor-row { gap: 10px; }
+    .actor-card { padding: 12px 14px; gap: 12px; flex-wrap: wrap; }
+    .actor-card__char { font-size: 14px; }
+    .actor-card__actor { font-size: 14px; }
+    .actor-card__ig { font-size: 12px; padding: 4px 8px; }
+
+    .team { padding-top: 24px; }
+    .team__title { font-size: 17px; letter-spacing: 0.22em; margin-bottom: 18px; }
+    .team__subtitle { font-size: 12px; letter-spacing: 0.22em; margin: 22px 0 10px; }
+    .member {
+      flex-wrap: wrap;
+      gap: 4px 12px;
+      padding: 12px 4px;
+      align-items: center;
+    }
+    .member__char {
+      min-width: 0;
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      flex: 1 1 60%;
+    }
+    .member__name {
+      font-size: 13px;
+      flex: 1 1 100%;
+      order: 3;
+    }
+    .member__link { font-size: 12px; padding: 4px 8px; }
+
+    footer { font-size: 11px; letter-spacing: 0.22em; }
+  }
+
+  /* ---------- Very small phones ---------- */
+  @media (max-width: 360px) {
+    :root { --walkman-disc-size: 170px; }
+    .tonearm__arm { height: 170px; }
+    .walkman__window { left: 10px; }
+  }
 </style>
 </head>
 <body>
@@ -915,38 +1017,39 @@
 <script>
 const cast = {
   Laia:            { actor: "Isa Orea",          ig: "isaorea" },
-  Mangel:          { actor: "Oscar Manuel Ruiz" },
-  Carla:           { actor: "Sara Rhodes" },
-  "Wei Xu":        { actor: "Rodrigo Rivera" },
-  Alvaro:          { actor: "Sergio Vera" },
-  Julia:           { actor: "Elena Cabanillas" },
-  Dario:           { actor: "Andrés García Vera" },
-  "Padre Rodrigo": { actor: "Jordi Estapé" },
+  Mangel:          { actor: "Oscar Manuel Ruiz", ig: "mav3r1ck._" },
+  Carla:           { actor: "Sara Rhodes",       ig: "sararhodes_" },
+  "Wei Xu":        { actor: "Rodrigo Rivera",    ig: "errre__" },
+  Alvaro:          { actor: "Sergio Vera",       ig: "ssergiovera" },
+  Julia:           { actor: "Elena Cabanillas",  ig: "elena.cabanillas" },
+  Dario:           { actor: "Andrés García Vera", ig: "madmonodoblajes" },
+  "Padre Rodrigo": { actor: "Jordi Estapé",     linkedin: "george-stape-j-estape", youtube: "georgestapejetactordedoblaje" },
+  "Créditos":      { actor: "Claudia García",    ig: "claugarcia_19" },
 };
 
 const tracks = [
-  { n: 1, name: "Mangel",        file: "CAP 1 MANGEL.mp3",          cast: ["Mangel", "Laia"],
+  { n: 1, name: "Mangel",        file: "CAP 1 MANGEL.mp3",          cast: ["Mangel", "Laia", "Créditos"],
     title: "El hombre del metro",
     description: "Laia, buscando un tema con el que justificar su sueldo, da con un post anónimo en Reddit: un hombre afirma haber visto a su doble en el metro de Moscú. Lo contacta y mantienen una conversación larga que no termina de aclarar nada — ¿una coincidencia inquietante, una broma elaborada, una percepción equivocada?" },
-  { n: 2, name: "Carla",         file: "CAP 2 CARLA.mp3",           cast: ["Carla", "Laia"],
+  { n: 2, name: "Carla",         file: "CAP 2 CARLA.mp3",           cast: ["Carla", "Laia", "Créditos"],
     title: "La anomalía",
     description: "Laia se entrevista con una enfermera neonatal española afincada en Islandia que, en los últimos meses, ha observado patrones que nadie ha sabido explicarle. Lo más inquietante no es lo que ha visto, sino la indiferencia con la que se ha topado al intentar contarlo — ¿puede tratarse de una maligna coincidencia?" },
-  { n: 3, name: "Wei Xu",        file: "CAP 3 WEIXU.mp3",           cast: ["Wei Xu", "Laia"],
+  { n: 3, name: "Wei Xu",        file: "CAP 3 WEIXU.mp3",           cast: ["Wei Xu", "Laia", "Créditos"],
     title: "El espacio latente",
     description: "Laia entrevista a Wei Xu, ingeniero de inteligencia artificial, que le cuenta cómo un sistema de reconocimiento facial del gobierno chino empezó a confundir a personas distintas. Lo que se descartó como un fallo técnico podría ser la primera medición fiable del fenómeno." },
-  { n: 4, name: "Alvaro",        file: "CAP 4 ALVARO.mp3",          cast: ["Alvaro", "Laia"],
+  { n: 4, name: "Alvaro",        file: "CAP 4 ALVARO.mp3",          cast: ["Alvaro", "Laia", "Créditos"],
     title: "La razón",
     description: "Laia recurre a su amigo Alvaro, biólogo, en busca de respuestas científicas. Él le explica cómo funciona la diversidad genética y qué ocurre cuando una población pierde variabilidad — un marco que empieza a sonar inquietantemente parecido a lo que ella está investigando." },
-  { n: 5, name: "Julia",         file: "CAP 5 JULIA.mp3",           cast: ["Julia", "Laia"],
+  { n: 5, name: "Julia",         file: "CAP 5 JULIA.mp3",           cast: ["Julia", "Laia", "Créditos"],
     title: "La filtración",
     description: "Laia se reúne con Julia, antigua compañera de facultad y ahora periodista en Estados Unidos, que formó parte del equipo que filtró por primera vez el término «La Contracción» al gran público. Reconstruyen juntas los momentos previos a la publicación." },
-  { n: 6, name: "Dario",         file: "CAP 6 DARIO.mp3",           cast: ["Dario", "Laia"],
+  { n: 6, name: "Dario",         file: "CAP 6 DARIO.mp3",           cast: ["Dario", "Laia", "Créditos"],
     title: "Las teorías",
     description: "Laia entrevista a Dario, investigador independiente y escritor de libros esotéricos, que busca dar respuestas a La Contracción basándose en creencias y misticismos antiguos." },
-  { n: 7, name: "Padre Rodrigo", file: "CAP 7 PADRE RODRIGO.mp3",   cast: ["Padre Rodrigo", "Laia"],
+  { n: 7, name: "Padre Rodrigo", file: "CAP 7 PADRE RODRIGO.mp3",   cast: ["Padre Rodrigo", "Laia", "Créditos"],
     title: "La imagen de Dios",
     description: "De vuelta al pueblo donde creció, Laia visita al Padre Rodrigo, el cura que la bautizó. Con la calma de quien ha hablado de estas cosas toda su vida, él le ofrece la lectura católica del fenómeno." },
-  { n: 8, name: "Laia",          file: "CAP 8 LAIA.mp3",            cast: ["Laia"],
+  { n: 8, name: "Laia",          file: "CAP 8 LAIA.mp3",            cast: ["Laia", "Créditos"],
     title: "El horizonte",
     description: "Muchos años después de cerrar la investigación, Laia se graba a sí misma una última vez. La Contracción nunca se detuvo: no hubo cura, ni explicación oficial, ni vuelta atrás — solo el lento desdibujarse de los rostros, los nombres y las historias que antes eran de cada uno. Este capítulo final es un testimonio íntimo, escrito en la voz de alguien que ya no espera respuestas y que solo se sienta delante del micrófono para dejar constancia." },
   { n: 0, name: "Banda Sonora",  file: "intro.mp3", intro: true,    cast: [],
@@ -1026,6 +1129,10 @@ function clearSpotify() {
 
 const igSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2 0 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.2-.1 1.6-.1 4.8-.1m0-2.2C8.7 0 8.3 0 7.1.1c-1.3.1-2.2.3-3 .6-.8.3-1.5.7-2.1 1.4C1.4 2.7 1 3.4.7 4.1c-.3.8-.5 1.7-.6 3C0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.2.6 3 .3.8.7 1.5 1.4 2.1.7.7 1.4 1.1 2.1 1.4.8.3 1.7.5 3 .6 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.2-.3 3-.6.8-.3 1.5-.7 2.1-1.4.7-.7 1.1-1.4 1.4-2.1.3-.8.5-1.7.6-3 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.2-.6-3-.3-.8-.7-1.5-1.4-2.1C21.3 1.4 20.6 1 19.9.7c-.8-.3-1.7-.5-3-.6C15.7 0 15.3 0 12 0z"/><path d="M12 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"/><circle cx="18.4" cy="5.6" r="1.4"/></svg>';
 
+const linkedinSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 11.01-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>';
+
+const youtubeSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.5A3 3 0 00.5 6.2C0 8 0 12 0 12s0 4 .5 5.8a3 3 0 002.1 2.1c1.8.5 9.4.5 9.4.5s7.6 0 9.4-.5a3 3 0 002.1-2.1c.5-1.8.5-5.8.5-5.8s0-4-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg>';
+
 function discInner(track) {
   if (track.intro) {
     return `
@@ -1060,19 +1167,31 @@ tracks.forEach((t, i) => {
 
 const slotEls = [...shelfEl.querySelectorAll(".disc-slot")];
 
+function socialLinks(person, cssClass) {
+  const out = [];
+  if (person.ig) {
+    out.push(`<a class="${cssClass}" href="https://www.instagram.com/${person.ig}/" target="_blank" rel="noopener noreferrer">${igSvg}@${person.ig}</a>`);
+  }
+  if (person.linkedin) {
+    out.push(`<a class="${cssClass}" href="https://www.linkedin.com/in/${person.linkedin}" target="_blank" rel="noopener noreferrer">${linkedinSvg}LinkedIn</a>`);
+  }
+  if (person.youtube) {
+    out.push(`<a class="${cssClass}" href="https://youtube.com/@${person.youtube}" target="_blank" rel="noopener noreferrer">${youtubeSvg}YouTube</a>`);
+  }
+  return out.join("");
+}
+
 function renderActorCard(charKey) {
   const c = cast[charKey];
   if (!c) return "";
-  const igLink = c.ig
-    ? `<a class="actor-card__ig" href="https://www.instagram.com/${c.ig}/" target="_blank" rel="noopener noreferrer">${igSvg}@${c.ig}</a>`
-    : "";
+  const links = socialLinks(c, "actor-card__ig");
   return `
     <article class="actor-card">
       <div class="actor-card__body">
         <div class="actor-card__char">${charKey}</div>
         <div class="actor-card__actor">${c.actor}</div>
       </div>
-      ${igLink}
+      ${links ? `<div class="actor-card__links">${links}</div>` : ""}
     </article>
   `;
 }
@@ -1185,14 +1304,14 @@ detailClose.addEventListener("click", () => {
 /* ---------- Team lists ---------- */
 const castList = [
   { primary: "Laia",          secondary: "Isa Orea",            ig: "isaorea" },
-  { primary: "Mangel",        secondary: "Oscar Manuel Ruiz" },
-  { primary: "Carla",         secondary: "Sara Rhodes" },
-  { primary: "Wei Xu",        secondary: "Rodrigo Rivera" },
-  { primary: "Alvaro",        secondary: "Sergio Vera" },
-  { primary: "Julia",         secondary: "Elena Cabanillas" },
-  { primary: "Dario",         secondary: "Andrés García Vera" },
-  { primary: "Padre Rodrigo", secondary: "Jordi Estapé" },
-  { primary: "Créditos",      secondary: "Claudia García" },
+  { primary: "Mangel",        secondary: "Oscar Manuel Ruiz",      ig: "mav3r1ck._" },
+  { primary: "Carla",         secondary: "Sara Rhodes",            ig: "sararhodes_" },
+  { primary: "Wei Xu",        secondary: "Rodrigo Rivera",         ig: "errre__" },
+  { primary: "Alvaro",        secondary: "Sergio Vera",            ig: "ssergiovera" },
+  { primary: "Julia",         secondary: "Elena Cabanillas",       ig: "elena.cabanillas" },
+  { primary: "Dario",         secondary: "Andrés García Vera",     ig: "madmonodoblajes" },
+  { primary: "Padre Rodrigo", secondary: "Jordi Estapé",           linkedin: "george-stape-j-estape", youtube: "georgestapejetactordedoblaje" },
+  { primary: "Créditos",      secondary: "Claudia García",         ig: "claugarcia_19" },
 ];
 
 const crew = [
@@ -1204,13 +1323,14 @@ const crew = [
 function renderMember(m) {
   const a = document.createElement("article");
   a.className = "member";
-  const link = m.ig
-    ? `<a class="member__link" href="https://www.instagram.com/${m.ig}/" target="_blank" rel="noopener noreferrer">${igSvg} @${m.ig}</a>`
+  const links = socialLinks(m, "member__link");
+  const linkBlock = links
+    ? `<div class="member__links">${links}</div>`
     : `<span class="member__link member__link--soon">${igSvg} @—</span>`;
   a.innerHTML = `
     <div class="member__char">${m.primary}</div>
     <div class="member__name">${m.secondary}</div>
-    ${link}
+    ${linkBlock}
   `;
   return a;
 }
