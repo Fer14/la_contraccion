@@ -484,7 +484,7 @@
       0 0 0 1px rgba(255,255,255,0.04) inset;
   }
 
-  /* ---------- Mustard "Banda Sonora" variant ---------- */
+  /* ---------- Mustard "Trailer" variant ---------- */
   .disc--blue {
     background:
       radial-gradient(circle at 50% 50%,
@@ -595,6 +595,7 @@
     font-size: 17px;
     line-height: 1.65;
     color: var(--fg);
+    white-space: pre-line;
   }
 
   .actor-row {
@@ -1131,7 +1132,7 @@ const cast = {
 };
 
 const tracks = [
-  { n: 1, name: "Mangel",        file: "CAP 1 MANGEL.mp3",          cast: ["Mangel", "Laia", "Voz en off", "Créditos"],
+  { n: 1, name: "Mangel",        file: "CAP 1 MANGEL.mp3",          cast: ["Mangel", "Laia", "Voz en off", "Créditos"], spotifyId: "6KwTHTuwO8gCbcV6BMGENe",
     title: "El hombre del metro",
     description: "Laia, buscando un tema con el que justificar su sueldo, da con un post anónimo en Reddit: un hombre afirma haber visto a su doble en el metro de Moscú. Lo contacta y mantienen una conversación larga que no termina de aclarar nada — ¿una coincidencia inquietante, una broma elaborada, una percepción equivocada?" },
   { n: 2, name: "Carla",         file: "CAP 2 CARLA.mp3",           cast: ["Carla", "Laia", "Voz en off", "Créditos"],
@@ -1155,9 +1156,9 @@ const tracks = [
   { n: 8, name: "Laia",          file: "CAP 8 LAIA.mp3",            cast: ["Laia", "Créditos"],
     title: "El horizonte",
     description: "Muchos años después de cerrar la investigación, Laia se graba a sí misma una última vez. La Contracción nunca se detuvo: no hubo cura, ni explicación oficial, ni vuelta atrás — solo el lento desdibujarse de los rostros, los nombres y las historias que antes eran de cada uno. Este capítulo final es un testimonio íntimo, escrito en la voz de alguien que ya no espera respuestas y que solo se sienta delante del micrófono para dejar constancia." },
-  { n: 0, name: "Banda Sonora",  file: "intro.mp3", intro: true,    cast: [],
+  { n: 0, name: "Trailer",       file: "intro.mp3", intro: true,    cast: [], spotifyId: "726O1fraa8JbYJUaUbUhXp",
     title: "Preludio",
-    description: "Pieza instrumental original que abre el universo de La Contracción. No es un tema introductorio en el sentido habitual — es el primer indicio del tono: una atmósfera lenta, cargada de espacio negativo, en la que cada elemento parece estar a punto de fundirse con el siguiente. Escuchada antes de los capítulos, prepara al oyente; escuchada después, suena distinta." },
+    description: "La Contracción es una ficción sonora creada y escrita por Fernando Cortés Sancho y Adriana Serrana Ramos.\n\nLaia, una periodista de investigación descubre en internet el testimonio de un hombre que afirma haber visto a su doble en el metro. Lo que parecía una historia aislada empieza a revelar conexiones inquietantes. Los límites entre identidad y realidad se difuminan cada vez más con las investigaciones. ¿Qué le está sucediendo a la humanidad?\n\nCon las voces de: Isa Orea, Óscar Manuel Ruiz, Sara Rhodes, Rodrigo Rivera, Sergio Vera, Elena Cabanillas, Andrés García Vera y Jordi Estapé" },
 ];
 
 const SPOTIFY_SHOW_ID = "6nejpQGUPKzQX69IIXwBqO";
@@ -1194,6 +1195,17 @@ function spotifyUriFor(track) {
 }
 
 function loadSpotifyTrack(track) {
+  if (!track.spotifyId) {
+    if (spotifyController) {
+      try { spotifyController.destroy(); } catch (e) {}
+      spotifyController = null;
+    }
+    pendingSpotifyTrack = null;
+    spotifyEmbed.innerHTML = '<div class="spotify-embed__placeholder">Próximamente</div>';
+    walkmanEl.classList.remove("playing");
+    if (walkmanDiscEl) walkmanDiscEl.classList.remove("spinning");
+    return;
+  }
   if (!spotifyApi) {
     pendingSpotifyTrack = track;
     return;
@@ -1259,7 +1271,7 @@ tracks.forEach((t, i) => {
   slot.className = "disc-slot";
   slot.dataset.idx = i;
   const discClass = "disc" + (t.intro ? " disc--blue" : "");
-  const cap = t.intro ? "Banda Sonora" : `Capítulo ${String(t.n).padStart(2,"0")}`;
+  const cap = t.intro ? "Trailer" : `Capítulo ${String(t.n).padStart(2,"0")}`;
   slot.innerHTML = `
     <div class="${discClass}">${discInner(t)}</div>
     <div class="cap">${cap}</div>
@@ -1306,7 +1318,7 @@ function selectTrack(idx) {
   slotEls.forEach(s => s.classList.remove("is-active"));
   slotEls[idx].classList.add("is-active");
 
-  detailChapter.textContent = track.intro ? "Banda Sonora" : `Capítulo ${String(track.n).padStart(2,"0")}`;
+  detailChapter.textContent = track.intro ? "Trailer" : `Capítulo ${String(track.n).padStart(2,"0")}`;
   detailTitle.textContent   = track.title || track.name;
   detailDesc.textContent    = track.description || "";
   actorRow.innerHTML        = (track.cast || []).map(renderActorCard).join("");
