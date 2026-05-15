@@ -174,14 +174,16 @@
   }
 
   .brand {
-    font-size: 18px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    font-weight: 800;
-    font-style: italic;
-    color: var(--accent);
+    margin: 0;
+    line-height: 0;
   }
-  .brand span { color: var(--fg); opacity: 0.45; font-style: normal; font-weight: 400; }
+  .brand__logo {
+    display: block;
+    width: auto;
+    height: 64px;
+    max-width: 100%;
+    object-fit: contain;
+  }
   .subtitle {
     font-size: 16px;
     letter-spacing: 0.28em;
@@ -980,7 +982,7 @@
 
     .hero { padding: 0 0 24px; gap: 24px; }
     .hero__brand { gap: 10px; padding-bottom: 12px; }
-    .brand { font-size: 15px; letter-spacing: 0.18em; }
+    .brand__logo { height: 44px; }
     .subtitle { font-size: 12px; letter-spacing: 0.2em; }
     .intro__creator { font-size: 14px; }
     .intro__synopsis { font-size: 16px; line-height: 1.6; }
@@ -1064,7 +1066,7 @@
     </div>
     <div class="hero__text">
       <div class="hero__brand">
-        <h1 class="brand">La <span>·</span> Contracción</h1>
+        <h1 class="brand"><img class="brand__logo" src="img/Logo_black_500px.png" alt="La Contracción"></h1>
         <div class="subtitle">Una investigación · Ocho protagonistas</div>
       </div>
       <p class="intro__creator">
