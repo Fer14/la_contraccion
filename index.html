@@ -926,6 +926,23 @@
     justify-content: flex-end;
   }
 
+  .acknowledgements {
+    padding-top: 18px;
+    text-align: center;
+  }
+  .acknowledgements__text {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 6px 0 18px;
+  }
+  .acknowledgements__text a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .acknowledgements__text a:hover { color: var(--ink); }
+
   footer {
     text-align: center;
     font-size: 14px;
@@ -1112,6 +1129,13 @@
 
     <h3 class="team__subtitle">Equipo de producción</h3>
     <div class="team__grid" id="crewGrid"></div>
+  </section>
+
+  <section class="acknowledgements">
+    <h3 class="team__subtitle">Agradecimientos</h3>
+    <p class="acknowledgements__text">
+      Algunos recursos utilizados en este sitio han sido obtenidos de <a href="https://pixabay.com" target="_blank" rel="noopener noreferrer">Pixabay</a>.
+    </p>
   </section>
 
   <footer>&copy; 2026 La Contracción</footer>
