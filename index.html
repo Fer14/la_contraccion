@@ -682,12 +682,14 @@
   .walkman__brand {
     position: absolute;
     top: 14px; left: 22px;
-    font-size: 14px;
-    letter-spacing: 0.28em;
-    color: var(--accent-bright);
-    text-transform: uppercase;
-    font-weight: 800;
-    font-style: italic;
+    line-height: 0;
+  }
+  .walkman__brand-logo {
+    display: block;
+    width: auto;
+    height: 44px;
+    max-width: 60vw;
+    object-fit: contain;
   }
 
   .deck {
@@ -1004,7 +1006,8 @@
     .detail__description { font-size: 15px; line-height: 1.55; }
 
     .walkman { padding: 34px 16px 20px; gap: 14px; border-radius: 14px; }
-    .walkman__brand { font-size: 11px; letter-spacing: 0.22em; left: 16px; top: 12px; }
+    .walkman__brand { left: 16px; top: 12px; }
+    .walkman__brand-logo { height: 34px; }
     .walkman::before { top: 12px; right: 16px; width: 6px; height: 6px; }
 
     .deck { height: calc(var(--walkman-disc-size) + 30px); margin-top: 10px; }
@@ -1098,7 +1101,7 @@
     <button class="detail__close" id="detailClose" aria-label="Cerrar">×</button>
     <div class="detail__grid">
       <div class="walkman" id="walkman">
-        <div class="walkman__brand">Reproductor</div>
+        <div class="walkman__brand"><img class="walkman__brand-logo" src="img/logo_yellow_500px.png" alt="La Contracción"></div>
         <div class="deck">
           <div class="walkman__window" id="window">
             <div class="walkman__placeholder">Inserta un disco</div>
