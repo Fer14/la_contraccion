@@ -485,7 +485,7 @@
   .disc__label {
     position: absolute;
     top: 50%; left: 50%;
-    width: 44%; height: 44%;
+    width: 56%; height: 56%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     background-color: #1a1a1a;
@@ -497,8 +497,12 @@
       0 0 0 1px rgba(0,0,0,0.7) inset,
       0 0 0 4px rgba(0,0,0,0.25) inset;
   }
-  .disc__label--ep1  { background-image: url("img/cover_ep1.jpg"); }
-  .disc__label--ep2  { background-image: url("img/cover_ep2.jpg"); }
+  .disc__label--ep1  { background-image: url("img/cover_ep1.png"); }
+  .disc__label--ep2  { background-image: url("img/cover_ep2.png"); }
+  .disc__label--ep3  { background-image: url("img/cover_ep3.png"); }
+  .disc__label--ep5  { background-image: url("img/cover_ep5.jpg"); }
+  .disc__label--ep7  { background-image: url("img/cover_ep7.png"); }
+  .disc__label--ep8  { background-image: url("img/cover_ep8.png"); }
   .disc__label--main { background-image: url("img/cover_main.jpg"); }
   .disc__hole {
     position: absolute;
@@ -1328,7 +1332,10 @@ function discInner(track) {
       <div class="disc__hole"></div>
     `;
   }
-  const variant = track.n % 2 === 1 ? "ep1" : "ep2";
+  const hasCover = new Set([1, 2, 3, 5, 7, 8]);
+  const variant = hasCover.has(track.n)
+    ? `ep${track.n}`
+    : (track.n % 2 === 1 ? "ep1" : "ep2");
   return `
     <div class="disc__label disc__label--${variant}"></div>
     <div class="disc__hole"></div>
@@ -1505,7 +1512,8 @@ const castList = [
 const crew = [
   { primary: "Fernando Cortés", secondary: "Creación · Guion" },
   { primary: "Adriana Serrano", secondary: "Producción" },
-  { primary: "Carmela Lemos",   secondary: "Producción" },
+  { primary: "Carmela Lemos",   secondary: "Producción", ig: "carmelalemos_" },
+  { primary: "Miguel Ángel Castillo", secondary: "Banda Sonora" },
 ];
 
 function renderMember(m) {
