@@ -497,12 +497,14 @@
       0 0 0 1px rgba(0,0,0,0.7) inset,
       0 0 0 4px rgba(0,0,0,0.25) inset;
   }
-  .disc__label--ep1  { background-image: url("img/cover_ep1.png"); }
-  .disc__label--ep2  { background-image: url("img/cover_ep2.png"); }
-  .disc__label--ep3  { background-image: url("img/cover_ep3.png"); }
-  .disc__label--ep5  { background-image: url("img/cover_ep5.jpg"); }
-  .disc__label--ep7  { background-image: url("img/cover_ep7.png"); }
-  .disc__label--ep8  { background-image: url("img/cover_ep8.png"); }
+  .disc__label--ep1  { background-image: url("img/Cap01_EL%20HOMBRE%20DEL%20METRO.png"); }
+  .disc__label--ep2  { background-image: url("img/Cap02_LA%20ANOMALI%CC%81A.png"); }
+  .disc__label--ep3  { background-image: url("img/Cap03_ELESPACIOLATENTE..png"); }
+  .disc__label--ep4  { background-image: url("img/Cap04_LA%20RAZO%CC%81N.png"); }
+  .disc__label--ep5  { background-image: url("img/Cap05_LA%20FILTRACIO%CC%81N.png"); }
+  .disc__label--ep6  { background-image: url("img/Cap06_LAS%20TEORIAS%2001.png"); }
+  .disc__label--ep7  { background-image: url("img/Cap07_%20IMAGEN%20DE%20DIOS.png"); }
+  .disc__label--ep8  { background-image: url("img/Cap08_EL%20HORIZONTE.png"); }
   .disc__label--main { background-image: url("img/cover_main.jpg"); }
   .disc__hole {
     position: absolute;
@@ -1141,7 +1143,7 @@
   </section>
 
   <section class="shelf-wrap">
-    <div class="shelf-label">Capítulos</div>
+    <div class="shelf-label">Episodios</div>
     <main class="shelf" id="shelf"></main>
   </section>
 
@@ -1161,7 +1163,7 @@
           </div>
         </div>
         <div class="spotify-embed" id="spotifyEmbed">
-          <div class="spotify-embed__placeholder">Selecciona un capítulo</div>
+          <div class="spotify-embed__placeholder">Selecciona un episodio</div>
         </div>
       </div>
 
@@ -1212,25 +1214,25 @@ const tracks = [
   { n: 1, name: "Mangel",        file: "CAP 1 MANGEL.mp3",          cast: ["Mangel", "Laia", "Voz en off", "Créditos"], spotifyId: "6KwTHTuwO8gCbcV6BMGENe",
     title: "El hombre en el metro",
     description: "Laia, buscando un tema con el que justificar su sueldo, da con un post anónimo en Reddit: un hombre afirma haber visto a su doble en el metro de Moscú. Lo contacta y mantienen una conversación larga que no termina de aclarar nada — ¿una coincidencia inquietante, una broma elaborada, una percepción equivocada?" },
-  { n: 2, name: "Carla",         file: "CAP 2 CARLA.mp3",           cast: ["Carla", "Laia", "Voz en off", "Créditos"],
+  { n: 2, name: "Carla",         file: "CAP 2 CARLA.mp3",           cast: ["Carla", "Laia", "Voz en off", "Créditos"], spotifyId: "4B66lwEEHEM0jTmK7Qvnx4",
     title: "La anomalía",
     description: "Laia se entrevista con una enfermera neonatal española afincada en Islandia que, en los últimos meses, ha observado patrones que nadie ha sabido explicarle. Lo más inquietante no es lo que ha visto, sino la indiferencia con la que se ha topado al intentar contarlo — ¿puede tratarse de una maligna coincidencia?" },
-  { n: 3, name: "Wei Xu",        file: "CAP 3 WEIXU.mp3",           cast: ["Wei Xu", "Laia", "Voz en off", "Créditos"],
+  { n: 3, name: "Wei Xu",        file: "CAP 3 WEIXU.mp3",           cast: ["Wei Xu", "Laia", "Voz en off", "Créditos"], spotifyId: "4J6oToq2MqRNgk8Ov5t5Q6",
     title: "El espacio latente",
     description: "Laia entrevista a Wei Xu, ingeniero de inteligencia artificial, que le cuenta cómo un sistema de reconocimiento facial del gobierno chino empezó a confundir a personas distintas. Lo que se descartó como un fallo técnico podría ser la primera medición fiable del fenómeno." },
-  { n: 4, name: "Alvaro",        file: "CAP 4 ALVARO.mp3",          cast: ["Alvaro", "Laia", "Voz en off", "Créditos"],
+  { n: 4, name: "Alvaro",        file: "CAP 4 ALVARO.mp3",          cast: ["Alvaro", "Laia", "Voz en off", "Créditos"], spotifyId: "63ak79VCMXPvLaToq4GeJH",
     title: "La razón",
     description: "Laia recurre a su amigo Alvaro, biólogo, en busca de respuestas científicas. Él le explica cómo funciona la diversidad genética y qué ocurre cuando una población pierde variabilidad — un marco que empieza a sonar inquietantemente parecido a lo que ella está investigando." },
-  { n: 5, name: "Julia",         file: "CAP 5 JULIA.mp3",           cast: ["Julia", "Laia", "Créditos"],
+  { n: 5, name: "Julia",         file: "CAP 5 JULIA.mp3",           cast: ["Julia", "Laia", "Créditos"], spotifyId: "28pjojhV89XtKDJgjTHRpx",
     title: "La filtración",
     description: "Laia se reúne con Julia, antigua compañera de facultad y ahora periodista en Estados Unidos, que formó parte del equipo que filtró por primera vez el término «La Contracción» al gran público. Reconstruyen juntas los momentos previos a la publicación." },
-  { n: 6, name: "Dario",         file: "CAP 6 DARIO.mp3",           cast: ["Dario", "Laia", "Créditos"],
+  { n: 6, name: "Dario",         file: "CAP 6 DARIO.mp3",           cast: ["Dario", "Laia", "Créditos"], spotifyId: "11hqWtp6DkZP1DnwiXKWdZ",
     title: "Las teorías",
     description: "Laia entrevista a Dario, investigador independiente y escritor de libros esotéricos, que busca dar respuestas a La Contracción basándose en creencias y misticismos antiguos." },
-  { n: 7, name: "Padre Rodrigo", file: "CAP 7 PADRE RODRIGO.mp3",   cast: ["Padre Rodrigo", "Laia", "Créditos"],
+  { n: 7, name: "Padre Rodrigo", file: "CAP 7 PADRE RODRIGO.mp3",   cast: ["Padre Rodrigo", "Laia", "Créditos"], spotifyId: "4YNA6sOaOXsFlXNtzn2sBF",
     title: "La imagen de Dios",
     description: "De vuelta al pueblo donde creció, Laia visita al Padre Rodrigo, el cura que la bautizó. Con la calma de quien ha hablado de estas cosas toda su vida, él le ofrece la lectura católica del fenómeno." },
-  { n: 8, name: "Laia",          file: "CAP 8 LAIA.mp3",            cast: ["Laia", "Créditos"],
+  { n: 8, name: "Laia",          file: "CAP 8 LAIA.mp3",            cast: ["Laia", "Créditos"], spotifyId: "2agebONlYHZR9CBFsgz9R2",
     title: "El horizonte",
     description: "Muchos años después de cerrar la investigación, Laia se graba a sí misma una última vez. La Contracción nunca se detuvo: no hubo cura, ni explicación oficial, ni vuelta atrás — solo el lento desdibujarse de los rostros, los nombres y las historias que antes eran de cada uno. Este capítulo final es un testimonio íntimo, escrito en la voz de alguien que ya no espera respuestas y que solo se sienta delante del micrófono para dejar constancia." },
   { n: 0, name: "Trailer",       file: "intro.mp3", intro: true,    cast: [], spotifyId: "726O1fraa8JbYJUaUbUhXp",
@@ -1239,7 +1241,7 @@ const tracks = [
 ];
 
 const SPOTIFY_SHOW_ID = "033gHAuL53qYGznVZtdBOK";
-const SPOTIFY_PLACEHOLDER = '<div class="spotify-embed__placeholder">Selecciona un capítulo</div>';
+const SPOTIFY_PLACEHOLDER = '<div class="spotify-embed__placeholder">Selecciona un episodio</div>';
 
 const shelfEl       = document.getElementById("shelf");
 const windowEl      = document.getElementById("window");
@@ -1332,7 +1334,7 @@ function discInner(track) {
       <div class="disc__hole"></div>
     `;
   }
-  const hasCover = new Set([1, 2, 3, 5, 7, 8]);
+  const hasCover = new Set([1, 2, 3, 4, 5, 6, 7, 8]);
   const variant = hasCover.has(track.n)
     ? `ep${track.n}`
     : (track.n % 2 === 1 ? "ep1" : "ep2");
@@ -1351,7 +1353,7 @@ tracks.forEach((t, i) => {
   slot.className = "disc-slot";
   slot.dataset.idx = i;
   const discClass = "disc" + (t.intro ? " disc--blue" : "");
-  const cap = t.intro ? "Trailer" : `Capítulo ${String(t.n).padStart(2,"0")}`;
+  const cap = t.intro ? "Trailer" : `Episodio ${String(t.n).padStart(2,"0")}`;
   slot.innerHTML = `
     <div class="${discClass}">${discInner(t)}</div>
     <div class="cap">${cap}</div>
@@ -1398,7 +1400,7 @@ function selectTrack(idx) {
   slotEls.forEach(s => s.classList.remove("is-active"));
   slotEls[idx].classList.add("is-active");
 
-  detailChapter.textContent = track.intro ? "Trailer" : `Capítulo ${String(track.n).padStart(2,"0")}`;
+  detailChapter.textContent = track.intro ? "Trailer" : `Episodio ${String(track.n).padStart(2,"0")}`;
   detailTitle.textContent   = track.title || track.name;
   detailDesc.textContent    = track.description || "";
   actorRow.innerHTML        = (track.cast || []).map(renderActorCard).join("");
