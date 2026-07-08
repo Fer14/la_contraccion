@@ -1009,6 +1009,29 @@
     padding-top: 18px;
     border-top: 1px solid var(--line);
   }
+  .footer__contact {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 16px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.25s, border-color 0.25s;
+  }
+  .footer__contact:hover {
+    color: var(--accent-deep);
+    border-bottom-color: var(--accent);
+  }
+  .footer__contact svg {
+    width: 16px;
+    height: 16px;
+    vertical-align: -3px;
+    margin: 0 6px 0 8px;
+    fill: currentColor;
+  }
 
   @keyframes rise {
     from { opacity: 0; transform: translateY(12px); }
@@ -1206,6 +1229,7 @@
     <p class="acknowledgements__text">
       Algunos recursos utilizados en este sitio han sido obtenidos de <a href="https://pixabay.com" target="_blank" rel="noopener noreferrer">Pixabay</a>.
     </p>
+    <a class="footer__contact" href="mailto:lacontraccionpodcast@gmail.com">Contacta con nosotros<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.13L3.4 6H20.6L12 12.13zM3 8.02V18h18V8.02l-9 6.42-9-6.42z"/></svg>↗</a>
   </section>
 
   <footer>&copy; 2026 La Contracción</footer>
